@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Sign up</h1>
+	<p>Create your account to get started!</p>
+	<form action="" method="post" name="signup">
+		{{ form.hidden_tag()}}
+		<p>
+			Please enter your First Name:<br>
+			{{ form.firstname }}	
+		</p>
+		<p>
+			Please enter your last name:<br>
+			{{ form.lastname }}
+		</p>
+		<p>
+			Please enter your email address:<br>
+			{{ form.email }}
+		</p>
+		<p>
+			Please enter your phone number:<br>
+			{{ form.phone }}
+		</p>
+		<p><input type="submit" name="" value="Sign Up"> </p>
+	</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Sign in</h1>
+	{% for message in get_flashed_messages() %}
+        <p><b>Error</b>: {{ message }}</p>
+    {% endfor %}
+        {% if current_user.is_authenticated %}
+            <h2>Hi, {{ current_user.nickname }}!</h2>
+            <p><a href="{{ url_for('logout') }}">Logout</a></p>
+        {% else %}
+			<form action="" method="post" name="login">
+				{{ form.hidden_tag() }}
+				<p>
+					Please enter your username:<br>
+					{{ form.username }}<br>
+				</p>
+				<p>
+					Please enter your password:<br>
+					{{ form.password }}
+				</p>
+				<p>{{ form.rememer_me }} Remember Me </p>
+				<p><input type="submit" name="" value="Sign In"> </p>
+			</form>
+			<p>
+				<!-- Links to Oauth Providers-->
+				Login with <a href="{{ url_for('oauth_authorize', provider='facebook') }}">Facebook</a> | <a href="{{ url_for('oauth_authorize', provider='twitter') }}">Twitter</a> 
+			</p>
+		{% endif %}
+{% endblock %}
